@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     color: red;
     margin-bottom: 50px;
+    text-transform: capitalize;
 }
 div {
     text-align: center;

@@ -4,20 +4,29 @@ var http=require('http');
 const port = 3000;
 var server=http.createServer(function(req,res){
 
-    const nodeData=fs.readFileSync('public/index.html');
+    
 
     if(req.url==="/"){
         res.writeHead(200,{
             'Content-Type':'text/html'
         });
-        res.write(nodeData);
+        const home=fs.readFileSync('public/index.html');
+        res.write(home);
+        res.end();
+    }
+    else if(req.url==="/about"){
+        res.writeHead(200,{
+            'Content-Type':'text/html'
+        });
+        const about = fs.readFileSync('public/about.html');
+        res.write(about);
         res.end();
     }
     else if(req.url==='/style.css'){
         res.writeHead(200,{
             'Content-Type':'text/css'
         })
-        const css = fs.readFileSync('public/style.css')    
+        const css = fs.readFileSync('public/style.css');    
         res.write(css);
         res.end();
     }
@@ -25,7 +34,7 @@ var server=http.createServer(function(req,res){
         res.writeHead(200,{
             'Content-Type':'text/js'
         })
-        const js = fs.readFileSync('public/main.js')    
+        const js = fs.readFileSync('public/main.js');    
         res.write(js);
         res.end();
     }
